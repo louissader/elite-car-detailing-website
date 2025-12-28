@@ -2,9 +2,12 @@ import React, { useState } from 'react';
 import Navbar from '../components/Navbar';
 import PricingCalculator from '../components/PricingCalculator';
 import AppointmentCalendar from '../components/AppointmentCalendar';
+import { createBooking } from '../lib/bookingService';
 
 const Booking = () => {
   const [currentStep, setCurrentStep] = useState(1);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState(null);
   const [bookingData, setBookingData] = useState({
     service: null,
     totalPrice: 0,
@@ -67,12 +70,47 @@ const Booking = () => {
   const canProceedToStep3 = bookingData.date !== null && bookingData.time !== null;
   const canSubmit = bookingData.customer.name && bookingData.customer.email && bookingData.customer.phone;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // In a real app, this would send data to backend/Supabase
-    console.log('Booking submitted:', bookingData);
-    alert(`Thank you for booking! We'll send a confirmation to ${bookingData.customer.email}`);
-    // Reset or redirect
+    setIsSubmitting(true);
+    setSubmitError(null);
+
+    try {
+      // Submit booking to Supabase
+      const result = await createBooking(bookingData);
+
+      if (result.success) {
+        // Show success message
+        const message = result.demo
+          ? `Booking created in demo mode!\n\nNote: To enable real bookings and email confirmations:\n1. Set up Supabase (see supabase-setup.md)\n2. Add environment variables to .env file\n3. Restart the dev server\n\nYour booking details have been logged to the console.`
+          : `Thank you for booking, ${bookingData.customer.name}!\n\nConfirmation email sent to ${bookingData.customer.email}\n\nBooking ID: ${result.data.id}\n\nWe'll see you on ${bookingData.date.toLocaleDateString()} at ${bookingData.time}!`;
+
+        alert(message);
+
+        // Reset form and go back to step 1
+        setBookingData({
+          service: null,
+          totalPrice: 0,
+          date: null,
+          time: null,
+          customer: {
+            name: '',
+            email: '',
+            phone: '',
+            vehicleInfo: ''
+          }
+        });
+        setCurrentStep(1);
+      } else {
+        // Show error message
+        setSubmitError(result.message || 'Failed to create booking. Please try again.');
+      }
+    } catch (error) {
+      console.error('Booking submission error:', error);
+      setSubmitError('An unexpected error occurred. Please try again or call us at (555) 123-4567.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -263,22 +301,30 @@ const Booking = () => {
                           />
                         </div>
 
+                        {/* Error Display */}
+                        {submitError && (
+                          <div className="bg-red-900/20 border border-red-500/50 p-4 rounded-sm">
+                            <p className="text-red-400 text-sm">{submitError}</p>
+                          </div>
+                        )}
+
                         <div className="flex gap-4 mt-8">
                           <button
                             type="button"
                             onClick={() => setCurrentStep(2)}
                             className="flex-1 btn-secondary py-4"
+                            disabled={isSubmitting}
                           >
                             Back
                           </button>
                           <button
                             type="submit"
-                            disabled={!canSubmit}
+                            disabled={!canSubmit || isSubmitting}
                             className={`flex-1 ${
-                              canSubmit ? 'btn-primary' : 'bg-luxury-gold/30 text-luxury-black/50 cursor-not-allowed'
+                              canSubmit && !isSubmitting ? 'btn-primary' : 'bg-luxury-gold/30 text-luxury-black/50 cursor-not-allowed'
                             } py-4`}
                           >
-                            Confirm Booking
+                            {isSubmitting ? 'Processing...' : 'Confirm Booking'}
                           </button>
                         </div>
                       </form>
