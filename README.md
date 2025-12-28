@@ -1,6 +1,6 @@
 # Elite Detailing - Luxury Car & Private Jet Detailing Website
 
-**Current Version: v1.1.0**
+**Current Version: v1.2.0**
 
 A luxurious, modern website for a high-end car and private jet detailing business built with React, Vite, and Tailwind CSS.
 
@@ -10,6 +10,7 @@ A luxurious, modern website for a high-end car and private jet detailing busines
 - **Vite** - Build tool and development server
 - **Tailwind CSS v3** - Utility-first CSS framework
 - **React Router DOM** - Multi-page navigation ✅
+- **React DatePicker** - Appointment calendar integration ✅
 - **Supabase** - Backend/Database (to be integrated)
 - **Resend/EmailJS** - Email services (to be integrated)
 - **Vercel** - Hosting platform (deployed)
@@ -42,7 +43,7 @@ A luxurious, modern website for a high-end car and private jet detailing busines
 - Smooth transitions
 - React Router integration
 
-### Services Page (v1.1.0) ✨ NEW
+### Services Page (v1.1.0)
 ✅ **Comprehensive Service Packages**
 - Category toggle between Auto and Private Jet detailing
 - Three-tier pricing structure for each category
@@ -73,6 +74,43 @@ A luxurious, modern website for a high-end car and private jet detailing busines
 - Placeholder structure ready for real images
 - Interactive hover effects
 - Mobile-responsive layout
+
+### Booking System (v1.2.0) ✨ NEW
+✅ **Online Appointment Booking**
+- Complete 3-step booking flow
+- Progress indicator with step navigation
+- Real-time booking summary sidebar
+- Mobile-optimized booking experience
+
+✅ **Interactive Pricing Calculator**
+- Service category selection (Auto/Jet)
+- Package selection with descriptions
+- Vehicle/aircraft size adjustment (0.9x - 1.5x multipliers)
+- Add-on services with individual pricing
+- Real-time total price calculation
+- Dynamic price breakdown display
+
+✅ **Appointment Calendar Integration**
+- Interactive date picker with custom luxury styling
+- Business hours enforcement (Mon-Sat, 8 AM - 6 PM)
+- Time slot selection with availability status
+- Visual feedback for booked/available slots
+- Date filtering (no past dates, no Sundays)
+
+✅ **Customer Information Form**
+- Contact details capture (name, email, phone)
+- Vehicle/aircraft information field
+- Form validation and required fields
+- Booking confirmation flow
+
+✅ **Booking Features**
+- Step 1: Service selection with pricing calculator
+- Step 2: Date and time appointment scheduling
+- Step 3: Customer information and confirmation
+- Live price updates as selections change
+- Size-based pricing adjustments
+- Add-on service selection
+- Booking summary with all details
 
 ## Color Palette (Luxury Theme)
 
