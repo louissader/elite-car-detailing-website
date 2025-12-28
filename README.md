@@ -162,25 +162,31 @@ A luxurious, modern website for a high-end car and private jet detailing busines
 - Gitignore for security
 - Vercel deployment ready
 
-## Setup Instructions
+## 🚀 Setup Instructions
 
-### Quick Start (Demo Mode)
-The website works out of the box in demo mode. Bookings are logged to console.
+### ⚡ Quick Setup (RECOMMENDED - Start Here!)
+**Your Supabase credentials are already configured!** Just follow these steps:
 
-### Production Setup
-1. **Set up Supabase** (see `supabase-setup.md`):
-   - Create Supabase project
-   - Run database schema SQL
-   - Get API keys
-2. **Configure Environment**:
-   - Copy `.env.example` to `.env`
-   - Add Supabase URL and keys
-   - Add Resend API key
-3. **Restart Dev Server**:
-   - `npm run dev`
-4. **Deploy to Vercel**:
-   - Add environment variables in Vercel dashboard
-   - Redeploy project
+1. **📋 Read the Setup Guide**: Open `SETUP-GUIDE.md` for step-by-step instructions
+2. **🗄️ Create Database Table**:
+   - Copy SQL from `database-schema.sql`
+   - Paste in Supabase SQL Editor
+   - Click "Run"
+3. **🔄 Restart Dev Server**: `npm run dev`
+4. **✅ Test Booking**: Visit `/booking` and submit a test booking
+
+**That's it!** Check Supabase Table Editor to see your booking.
+
+### 📚 Detailed Documentation
+- **`SETUP-GUIDE.md`** - Simple step-by-step guide (START HERE!)
+- **`database-schema.sql`** - SQL code to create database table
+- **`supabase-setup.md`** - Detailed technical documentation
+- **`.env.example`** - Environment variables template
+
+### 🌐 Deploy to Vercel
+1. Add environment variables in Vercel dashboard (see `SETUP-GUIDE.md`)
+2. Redeploy project
+3. Done!
 
 ### Add Images
 1. Place photos in appropriate folders:
