@@ -1,6 +1,6 @@
 # Elite Detailing - Luxury Car & Private Jet Detailing Website
 
-**Current Version: v1.2.0**
+**Current Version: v1.3.0**
 
 A luxurious, modern website for a high-end car and private jet detailing business built with React, Vite, and Tailwind CSS.
 
@@ -11,8 +11,8 @@ A luxurious, modern website for a high-end car and private jet detailing busines
 - **Tailwind CSS v3** - Utility-first CSS framework
 - **React Router DOM** - Multi-page navigation ✅
 - **React DatePicker** - Appointment calendar integration ✅
-- **Supabase** - Backend/Database (to be integrated)
-- **Resend/EmailJS** - Email services (to be integrated)
+- **Supabase** - Backend/Database ✅ INTEGRATED
+- **Resend** - Email confirmation service ✅ INTEGRATED
 - **Vercel** - Hosting platform (deployed)
 
 ## Features Implemented
@@ -75,7 +75,7 @@ A luxurious, modern website for a high-end car and private jet detailing busines
 - Interactive hover effects
 - Mobile-responsive layout
 
-### Booking System (v1.2.0) ✨ NEW
+### Booking System (v1.2.0)
 ✅ **Online Appointment Booking**
 - Complete 3-step booking flow
 - Progress indicator with step navigation
@@ -111,6 +111,84 @@ A luxurious, modern website for a high-end car and private jet detailing busines
 - Size-based pricing adjustments
 - Add-on service selection
 - Booking summary with all details
+
+### Backend & Database (v1.3.0) ✨ NEW
+✅ **Supabase Integration**
+- PostgreSQL database with bookings table
+- Row Level Security (RLS) policies configured
+- UUID primary keys with auto-generation
+- Indexed columns for optimized queries
+- JSONB storage for add-ons array
+- Email validation at database level
+- Status workflow (pending/confirmed/completed/cancelled)
+
+✅ **Booking Data Storage**
+- Complete booking submission to database
+- Customer information persistence
+- Service package and pricing storage
+- Appointment date/time tracking
+- Vehicle/aircraft details capture
+- Real-time data synchronization
+
+✅ **Email Confirmation System**
+- Professional HTML email templates
+- Booking confirmation to customers
+- Detailed appointment information
+- Service package summary in email
+- Pricing breakdown display
+- Contact information and next steps
+- Resend API integration ready
+
+✅ **Demo Mode**
+- Graceful fallback when Supabase not configured
+- Console logging of booking data
+- Setup instructions displayed to user
+- Easy transition to production mode
+
+✅ **Image Asset Organization**
+- Structured folder hierarchy:
+  - `/team` - Professional headshots
+  - `/cars` - Luxury auto detailing photos
+  - `/jets` - Private jet detailing photos
+- Comprehensive README with specs
+- File naming conventions
+- Optimization guidelines
+- Suggested photo lists
+
+✅ **Environment Configuration**
+- .env.example template provided
+- Supabase URL and API keys
+- Resend API key configuration
+- Gitignore for security
+- Vercel deployment ready
+
+## Setup Instructions
+
+### Quick Start (Demo Mode)
+The website works out of the box in demo mode. Bookings are logged to console.
+
+### Production Setup
+1. **Set up Supabase** (see `supabase-setup.md`):
+   - Create Supabase project
+   - Run database schema SQL
+   - Get API keys
+2. **Configure Environment**:
+   - Copy `.env.example` to `.env`
+   - Add Supabase URL and keys
+   - Add Resend API key
+3. **Restart Dev Server**:
+   - `npm run dev`
+4. **Deploy to Vercel**:
+   - Add environment variables in Vercel dashboard
+   - Redeploy project
+
+### Add Images
+1. Place photos in appropriate folders:
+   - `src/assets/images/team/` - Team headshots
+   - `src/assets/images/cars/` - Car detailing photos
+   - `src/assets/images/jets/` - Jet detailing photos
+2. Follow naming conventions in `src/assets/images/README.md`
+3. Optimize images before uploading (<500KB each)
 
 ## Color Palette (Luxury Theme)
 
