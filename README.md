@@ -1,20 +1,22 @@
 # Elite Detailing - Luxury Car & Private Jet Detailing Website
 
+**Current Version: v1.1.0**
+
 A luxurious, modern website for a high-end car and private jet detailing business built with React, Vite, and Tailwind CSS.
 
 ## Tech Stack
 
 - **React** - Frontend framework
 - **Vite** - Build tool and development server
-- **Tailwind CSS** - Utility-first CSS framework
-- **React Router** - Navigation (to be implemented for additional pages)
+- **Tailwind CSS v3** - Utility-first CSS framework
+- **React Router DOM** - Multi-page navigation ✅
 - **Supabase** - Backend/Database (to be integrated)
 - **Resend/EmailJS** - Email services (to be integrated)
-- **Vercel** - Hosting platform (deployment ready)
+- **Vercel** - Hosting platform (deployed)
 
 ## Features Implemented
 
-### Homepage
+### Homepage (v1.0.0)
 ✅ **Hero Section**
 - Full-screen hero with gradient overlay
 - Compelling value proposition and tagline
@@ -38,6 +40,39 @@ A luxurious, modern website for a high-end car and private jet detailing busines
 - Fixed navbar with scroll effects
 - Mobile-responsive hamburger menu
 - Smooth transitions
+- React Router integration
+
+### Services Page (v1.1.0) ✨ NEW
+✅ **Comprehensive Service Packages**
+- Category toggle between Auto and Private Jet detailing
+- Three-tier pricing structure for each category
+- Detailed feature lists for each package
+- "Most Popular" package highlighting
+- Professional pricing based on 2025 industry research
+
+✅ **Auto Detailing Packages**
+- Essential Detail: $199+ (Sedans & Coupes)
+- Executive Detail: $399+ (Luxury Vehicles & SUVs) - Most Popular
+- Concierge Detail: $799+ (Exotic & High-End Vehicles)
+
+✅ **Private Jet Packages**
+- Light Aircraft Detail: $1,499+ (Cessna, Light Turboprops)
+- Executive Jet Detail: $3,999+ (Mid-Size Private Jets) - Most Popular
+- Fleet & Large Aircraft: $8,999+ (Large Jets & Commercial Aircraft)
+
+✅ **Add-On Services**
+- Ceramic Coating (from $599)
+- Paint Protection Film (from $1,299)
+- Interior Protection (from $299)
+- Engine Detailing (from $199)
+- Headlight Restoration (from $149)
+- Pet Hair Removal (from $99)
+
+✅ **Before/After Gallery**
+- Gallery grid with lightbox functionality
+- Placeholder structure ready for real images
+- Interactive hover effects
+- Mobile-responsive layout
 
 ## Color Palette (Luxury Theme)
 
