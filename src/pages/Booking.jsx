@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Navbar from '../components/Navbar';
 import PricingCalculator from '../components/PricingCalculator';
 import AppointmentCalendar from '../components/AppointmentCalendar';
+import Footer from '../components/Footer';
 import { createBooking } from '../lib/bookingService';
 
 const Booking = () => {
@@ -423,6 +424,7 @@ const Booking = () => {
           </div>
         </div>
       </section>
+      <Footer />
     </div>
   );
 };

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Navbar from '../components/Navbar';
 import ServicePackage from '../components/ServicePackage';
 import BeforeAfterGallery from '../components/BeforeAfterGallery';
+import Footer from '../components/Footer';
 
 const Services = () => {
   const [selectedCategory, setSelectedCategory] = useState('auto');
@@ -364,6 +365,7 @@ const Services = () => {
           </div>
         </div>
       </section>
+      <Footer />
     </div>
   );
 };
