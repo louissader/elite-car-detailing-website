@@ -109,6 +109,15 @@ export default async function handler(req, res) {
     }
 
     if (Object.keys(errors).length > 0) {
+      console.error('Validation errors:', errors);
+      console.error('Received data:', {
+        customer_name: bookingData.customer_name,
+        customer_email: bookingData.customer_email,
+        customer_phone: bookingData.customer_phone,
+        appointment_date: bookingData.appointment_date,
+        appointment_time: bookingData.appointment_time,
+        total_price: bookingData.total_price
+      });
       return res.status(400).json({
         success: false,
         error: 'Validation failed',

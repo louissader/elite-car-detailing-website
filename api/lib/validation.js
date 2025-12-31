@@ -236,15 +236,18 @@ export const validateTime = (time) => {
 
   const trimmed = time.trim();
 
-  // Check format: HH:MM AM/PM
-  const timeRegex = /^(0?[1-9]|1[0-2]):[0-5][0-9]\s?(AM|PM)$/i;
+  // Check format: HH:MM AM/PM (with or without space)
+  const timeRegex = /^(0?[1-9]|1[0-2]):[0-5][0-9]\s*(AM|PM)$/i;
   if (!timeRegex.test(trimmed)) {
     return { valid: false, error: 'Invalid time format (use HH:MM AM/PM)' };
   }
 
+  // Normalize format: ensure space before AM/PM
+  const normalized = trimmed.replace(/\s*(AM|PM)$/i, ' $1').toUpperCase();
+
   return {
     valid: true,
-    sanitized: trimmed.toUpperCase()
+    sanitized: normalized
   };
 };
 

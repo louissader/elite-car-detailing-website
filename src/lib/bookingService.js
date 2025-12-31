@@ -35,7 +35,11 @@ export const createBooking = async (bookingData) => {
     const result = await response.json();
 
     if (!response.ok || !result.success) {
-      throw new Error(result.error || 'Failed to create booking');
+      // Include validation details if available
+      const errorMessage = result.details
+        ? `${result.error}: ${JSON.stringify(result.details)}`
+        : result.error || 'Failed to create booking';
+      throw new Error(errorMessage);
     }
 
     console.log('✅ Booking created successfully:', result.data.id);
