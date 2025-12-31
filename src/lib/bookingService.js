@@ -1,73 +1,64 @@
-import { supabase, isSupabaseConfigured } from './supabase';
-import { sendBookingConfirmation } from './email';
+// Booking service now uses serverless API routes
+// No direct Supabase access from browser - all operations go through secure backend
 
 /**
- * Create a new booking in the database
+ * Create a new booking via serverless API
  * @param {Object} bookingData - Complete booking information
  * @returns {Promise<Object>} - Result with booking ID and status
  */
 export const createBooking = async (bookingData) => {
   try {
-    // Check if Supabase is configured
-    if (!isSupabaseConfigured()) {
-      console.warn('Supabase not configured. Booking will be stored locally only.');
-      // In demo mode, just log the booking
-      console.log('📝 Booking Data (Demo Mode):', bookingData);
-      return {
-        success: true,
-        demo: true,
-        message: 'Booking stored in demo mode (Supabase not configured)',
-        data: {
-          id: 'demo-' + Date.now(),
-          ...bookingData
-        }
-      };
-    }
-
-    // Prepare data for database
-    const dbData = {
+    // Prepare data for API
+    const apiData = {
       service_category: bookingData.service.category,
-      package_id: bookingData.service.package.id,
       package_name: bookingData.service.package.name,
       vehicle_size: bookingData.service.vehicleSize,
-      base_price: bookingData.service.package.basePrice,
       total_price: bookingData.totalPrice,
-      addons: JSON.stringify(bookingData.service.addons || []),
+      addons: bookingData.service.addons || [],
       appointment_date: bookingData.date.toISOString().split('T')[0],
       appointment_time: bookingData.time,
       customer_name: bookingData.customer.name,
       customer_email: bookingData.customer.email,
       customer_phone: bookingData.customer.phone,
-      vehicle_info: bookingData.customer.vehicleInfo || null,
-      status: 'pending'
+      vehicle_info: bookingData.customer.vehicleInfo || null
     };
 
-    // Insert booking into database
-    const { data, error } = await supabase
-      .from('bookings')
-      .insert([dbData])
-      .select()
-      .single();
+    // Call serverless API endpoint
+    const response = await fetch('/api/bookings/create', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(apiData)
+    });
 
-    if (error) {
-      console.error('Supabase error:', error);
-      throw new Error(`Database error: ${error.message}`);
+    const result = await response.json();
+
+    if (!response.ok || !result.success) {
+      throw new Error(result.error || 'Failed to create booking');
     }
 
-    console.log('✅ Booking created successfully:', data.id);
+    console.log('✅ Booking created successfully:', result.data.id);
 
-    // Send confirmation email
+    // Send confirmation email via API
     try {
-      const emailData = {
-        ...dbData,
-        id: data.id,
-        appointment_date: bookingData.date,
-        addons: bookingData.service.addons
-      };
-      const emailResult = await sendBookingConfirmation(emailData);
+      const emailResponse = await fetch('/api/emails/send-confirmation', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...apiData,
+          id: result.data.id
+        })
+      });
+
+      const emailResult = await emailResponse.json();
 
       if (emailResult.success) {
         console.log('✅ Confirmation email sent');
+      } else if (emailResult.demo) {
+        console.log('📧 Email service not configured - demo mode');
       } else {
         console.warn('⚠️ Email sending failed:', emailResult.error);
       }
@@ -79,7 +70,7 @@ export const createBooking = async (bookingData) => {
     return {
       success: true,
       message: 'Booking created successfully',
-      data: data
+      data: result.data
     };
 
   } catch (error) {
@@ -87,7 +78,7 @@ export const createBooking = async (bookingData) => {
     return {
       success: false,
       error: error.message,
-      message: 'Failed to create booking. Please try again or call us directly.'
+      message: 'Failed to create booking. Please try again or call us at 603-275-7513.'
     };
   }
 };
@@ -99,15 +90,14 @@ export const createBooking = async (bookingData) => {
  */
 export const getBooking = async (bookingId) => {
   try {
-    const { data, error } = await supabase
-      .from('bookings')
-      .select('*')
-      .eq('id', bookingId)
-      .single();
+    const response = await fetch(`/api/bookings/get?id=${bookingId}`);
+    const result = await response.json();
 
-    if (error) throw error;
+    if (!response.ok || !result.success) {
+      throw new Error(result.error || 'Failed to fetch booking');
+    }
 
-    return { success: true, data };
+    return { success: true, data: result.data };
   } catch (error) {
     console.error('Error fetching booking:', error);
     return { success: false, error: error.message };
@@ -121,15 +111,14 @@ export const getBooking = async (bookingId) => {
  */
 export const getCustomerBookings = async (email) => {
   try {
-    const { data, error } = await supabase
-      .from('bookings')
-      .select('*')
-      .eq('customer_email', email)
-      .order('appointment_date', { ascending: true });
+    const response = await fetch(`/api/bookings/get?email=${encodeURIComponent(email)}`);
+    const result = await response.json();
 
-    if (error) throw error;
+    if (!response.ok || !result.success) {
+      throw new Error(result.error || 'Failed to fetch bookings');
+    }
 
-    return { success: true, data };
+    return { success: true, data: result.data };
   } catch (error) {
     console.error('Error fetching customer bookings:', error);
     return { success: false, error: error.message };
@@ -144,16 +133,21 @@ export const getCustomerBookings = async (email) => {
  */
 export const updateBookingStatus = async (bookingId, status) => {
   try {
-    const { data, error } = await supabase
-      .from('bookings')
-      .update({ status })
-      .eq('id', bookingId)
-      .select()
-      .single();
+    const response = await fetch('/api/bookings/update', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ id: bookingId, status })
+    });
 
-    if (error) throw error;
+    const result = await response.json();
 
-    return { success: true, data };
+    if (!response.ok || !result.success) {
+      throw new Error(result.error || 'Failed to update booking');
+    }
+
+    return { success: true, data: result.data };
   } catch (error) {
     console.error('Error updating booking status:', error);
     return { success: false, error: error.message };
@@ -168,44 +162,61 @@ export const updateBookingStatus = async (bookingId, status) => {
  */
 export const getAvailableTimeSlots = async (date) => {
   try {
-    // All possible time slots
+    const dateString = date.toISOString().split('T')[0];
+
+    const response = await fetch(`/api/bookings/availability?date=${dateString}`);
+    const result = await response.json();
+
+    if (!response.ok || !result.success) {
+      throw new Error(result.error || 'Failed to fetch availability');
+    }
+
+    return result.data.slots;
+  } catch (error) {
+    console.error('Error fetching available slots:', error);
+
+    // Return default slots on error
     const allSlots = [
       '08:00 AM', '09:00 AM', '10:00 AM', '11:00 AM',
       '12:00 PM', '01:00 PM', '02:00 PM', '03:00 PM',
       '04:00 PM', '05:00 PM'
     ];
 
-    if (!isSupabaseConfigured()) {
-      // In demo mode, mark some slots as booked for demonstration
-      return allSlots.map((time, index) => ({
-        time,
-        available: index !== 3 && index !== 8 // Mark 11:00 AM and 04:00 PM as booked
-      }));
+    return allSlots.map(time => ({ time, available: true }));
+  }
+};
+
+/**
+ * Submit contact form via serverless API
+ * @param {Object} formData - Contact form data
+ * @returns {Promise<Object>} - Submission result
+ */
+export const submitContactForm = async (formData) => {
+  try {
+    const response = await fetch('/api/contact/submit', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData)
+    });
+
+    const result = await response.json();
+
+    if (!response.ok || !result.success) {
+      throw new Error(result.error || 'Failed to submit contact form');
     }
 
-    const dateString = date.toISOString().split('T')[0];
-
-    // Query existing bookings for this date
-    const { data: bookings, error } = await supabase
-      .from('bookings')
-      .select('appointment_time')
-      .eq('appointment_date', dateString)
-      .in('status', ['pending', 'confirmed']);
-
-    if (error) throw error;
-
-    // Get booked times
-    const bookedTimes = bookings.map(b => b.appointment_time);
-
-    // Mark slots as available/unavailable
-    return allSlots.map(time => ({
-      time,
-      available: !bookedTimes.includes(time)
-    }));
-
+    return {
+      success: true,
+      message: result.message || 'Thank you for your message! We will get back to you soon.'
+    };
   } catch (error) {
-    console.error('Error fetching available slots:', error);
-    // Return all slots as available on error
-    return allSlots.map(time => ({ time, available: true }));
+    console.error('Error submitting contact form:', error);
+    return {
+      success: false,
+      error: error.message,
+      message: 'Failed to submit form. Please try again or call us at 603-275-7513.'
+    };
   }
 };

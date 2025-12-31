@@ -21,6 +21,7 @@ const AppointmentCalendar = ({ onDateSelect, onTimeSelect }) => {
   ];
 
   // Filter out past dates
+  // eslint-disable-next-line no-unused-vars
   const isDateAvailable = (date) => {
     const today = new Date();
     today.setHours(0, 0, 0, 0);

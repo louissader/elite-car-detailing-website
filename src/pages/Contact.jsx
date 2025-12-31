@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import { submitContactForm } from '../lib/bookingService';
 
 // Import team images
 import wesleyImg from '../assets/images/team/wesley-baccay.JPG';
@@ -15,6 +16,9 @@ function Contact() {
     phone: '',
     message: ''
   });
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState(null);
 
   const teamMembers = [
     {
@@ -43,11 +47,29 @@ function Contact() {
     }
   ];
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // TODO: Implement contact form submission
-    alert('Thank you for your message! We will get back to you soon.');
-    setFormData({ name: '', email: '', phone: '', message: '' });
+    setIsSubmitting(true);
+    setSubmitMessage(null);
+
+    try {
+      const result = await submitContactForm(formData);
+
+      if (result.success) {
+        setSubmitMessage({ type: 'success', text: result.message });
+        setFormData({ name: '', email: '', phone: '', message: '' });
+      } else {
+        setSubmitMessage({ type: 'error', text: result.message });
+      }
+    } catch (err) {
+      setSubmitMessage({
+        type: 'error',
+        text: 'An unexpected error occurred. Please try again or call us at 603-275-7513.'
+      });
+      console.error('Contact form error:', err);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e) => {
@@ -239,11 +261,29 @@ function Contact() {
               ></textarea>
             </div>
 
+            {/* Success/Error Message */}
+            {submitMessage && (
+              <div className={`p-4 rounded-lg mb-6 ${
+                submitMessage.type === 'success'
+                  ? 'bg-green-900/20 border border-green-500/50'
+                  : 'bg-red-900/20 border border-red-500/50'
+              }`}>
+                <p className={submitMessage.type === 'success' ? 'text-green-400' : 'text-red-400'}>
+                  {submitMessage.text}
+                </p>
+              </div>
+            )}
+
             <button
               type="submit"
-              className="w-full bg-gold text-black px-8 py-4 rounded-lg font-semibold hover:bg-gold/90 transition-colors text-lg"
+              disabled={isSubmitting}
+              className={`w-full px-8 py-4 rounded-lg font-semibold transition-colors text-lg ${
+                isSubmitting
+                  ? 'bg-gold/50 text-black/50 cursor-not-allowed'
+                  : 'bg-gold text-black hover:bg-gold/90'
+              }`}
             >
-              Send Message
+              {isSubmitting ? 'Sending...' : 'Send Message'}
             </button>
           </form>
         </div>
