@@ -1,30 +1,29 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
+// Mobile-first service card following FRD guidelines
 const ServiceCard = ({ icon, title, description, features }) => {
   return (
-    <div className="group bg-luxury-dark-gray hover:bg-luxury-medium-gray transition-all duration-500 p-8 border border-luxury-gold/20 hover:border-luxury-gold relative overflow-hidden">
-      {/* Decorative corner accent */}
-      <div className="absolute top-0 right-0 w-20 h-20 border-t-2 border-r-2 border-luxury-gold opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-
-      {/* Icon */}
-      <div className="text-luxury-gold text-5xl mb-6">
+    <div className="group bg-luxury-dark-gray hover:bg-luxury-medium-gray transition-all duration-300 p-4 sm:p-6 border border-luxury-gold/20 hover:border-luxury-gold rounded-sm">
+      {/* Icon - Responsive sizing */}
+      <div className="text-luxury-gold text-3xl sm:text-4xl md:text-5xl mb-3 sm:mb-4">
         {icon}
       </div>
 
-      {/* Title */}
-      <h3 className="text-2xl font-bold text-luxury-white mb-4 group-hover:text-luxury-gold transition-colors duration-300">
+      {/* Title - Mobile-first typography (FRD: H2 24px-28px on mobile) */}
+      <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-luxury-white mb-2 sm:mb-3 group-hover:text-luxury-gold transition-colors duration-300">
         {title}
       </h3>
 
-      {/* Description */}
-      <p className="text-luxury-white/70 mb-6 leading-relaxed">
+      {/* Description - FRD: 16px minimum body text */}
+      <p className="text-sm sm:text-base text-luxury-white/70 mb-3 sm:mb-4 leading-relaxed">
         {description}
       </p>
 
-      {/* Features list */}
-      <ul className="space-y-3 mb-6">
-        {features.map((feature, index) => (
-          <li key={index} className="flex items-start text-sm text-luxury-white/60">
+      {/* Features list - Condensed */}
+      <ul className="space-y-1 sm:space-y-2 mb-3 sm:mb-4">
+        {features.slice(0, 3).map((feature, index) => (
+          <li key={index} className="flex items-start text-xs sm:text-sm text-luxury-white/60">
             <span className="text-luxury-gold mr-2">•</span>
             {feature}
           </li>
@@ -32,13 +31,13 @@ const ServiceCard = ({ icon, title, description, features }) => {
       </ul>
 
       {/* Learn More Link */}
-      <a
-        href="#"
-        className="inline-flex items-center text-luxury-gold hover:text-luxury-dark-gold transition-colors duration-300 uppercase text-xs tracking-widest font-semibold group"
+      <Link
+        to="/services"
+        className="inline-flex items-center text-luxury-gold hover:text-luxury-dark-gold transition-colors duration-300 uppercase text-xs tracking-wider font-semibold group"
       >
         Learn More
         <svg
-          className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300"
+          className="w-3 h-3 sm:w-4 sm:h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -48,7 +47,7 @@ const ServiceCard = ({ icon, title, description, features }) => {
         >
           <path d="M9 5l7 7-7 7"></path>
         </svg>
-      </a>
+      </Link>
     </div>
   );
 };
@@ -58,74 +57,74 @@ const FeaturedServices = () => {
     {
       icon: '🚗',
       title: 'Luxury Auto Detailing',
-      description: 'Meticulous care for your prestigious automobiles. From exotic sports cars to luxury sedans, we treat every vehicle with the reverence it deserves.',
+      description: 'Meticulous care for exotic sports cars and luxury sedans.',
       features: [
         'Paint correction & ceramic coating',
-        'Interior deep cleaning & conditioning',
-        'Engine bay detailing',
-        'Chrome & wheel restoration'
+        'Interior deep cleaning',
+        'Engine bay detailing'
       ]
     },
     {
       icon: '✈️',
       title: 'Private Jet Detailing',
-      description: 'Exclusive detailing services for private aircraft. Our certified team ensures your jet maintains its pristine condition inside and out.',
+      description: 'Exclusive detailing for private aircraft with certified expertise.',
       features: [
         'Exterior wash & polish',
-        'Cabin deep cleaning & sanitization',
-        'Leather treatment & conditioning',
-        'Window & windscreen treatment'
+        'Cabin deep cleaning',
+        'Leather treatment'
       ]
     },
     {
       icon: '⭐',
       title: 'Premium Protection',
-      description: 'Long-lasting protection packages that preserve your investment. Advanced coatings and treatments for ultimate durability.',
+      description: 'Long-lasting protection packages that preserve your investment.',
       features: [
         'Multi-year ceramic coating',
         'Paint protection film (PPF)',
-        'Interior fabric & leather protection',
-        'Maintenance programs available'
+        'Maintenance programs'
       ]
     }
   ];
 
   return (
-    <section className="py-24 bg-luxury-black relative">
-      {/* Background Pattern */}
+    <section className="py-8 sm:py-12 md:py-16 bg-luxury-black relative">
+      {/* Background Pattern - Subtle */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{
           backgroundImage: 'repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(212, 175, 55, 0.1) 35px, rgba(212, 175, 55, 0.1) 70px)'
         }}></div>
       </div>
 
-      <div className="container mx-auto px-6 md:px-12 lg:px-20 relative z-10">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <p className="text-luxury-gold uppercase tracking-widest text-sm mb-4 font-semibold">
+      <div className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-20 relative z-10">
+        {/* Section Header - Mobile-first responsive spacing */}
+        <div className="text-center mb-6 sm:mb-8 md:mb-10">
+          <p className="text-luxury-gold uppercase tracking-widest text-xs sm:text-sm mb-2 sm:mb-3 font-semibold">
             Our Services
           </p>
-          <h2 className="text-4xl md:text-5xl font-bold text-luxury-white mb-6">
+          {/* FRD: H1 28px-36px on mobile */}
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-luxury-white mb-3 sm:mb-4">
             Exceptional Services for
-            <span className="block text-luxury-gold mt-2">
+            <span className="block text-luxury-gold mt-1 sm:mt-2">
               Exceptional Vehicles
             </span>
           </h2>
-          <div className="w-20 h-1 bg-luxury-gold mx-auto"></div>
+          <div className="w-16 sm:w-20 h-0.5 sm:h-1 bg-luxury-gold mx-auto"></div>
         </div>
 
-        {/* Services Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Services Grid - FRD: Mobile 1 col, Tablet 2 col, Desktop 3 col */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {services.map((service, index) => (
             <ServiceCard key={index} {...service} />
           ))}
         </div>
 
-        {/* View All Services Button */}
-        <div className="text-center mt-16">
-          <button className="btn-secondary">
-            View All Services
-          </button>
+        {/* View All Services Button - Full width on mobile, auto on larger */}
+        <div className="text-center mt-6 sm:mt-8 md:mt-10">
+          <Link to="/services" className="w-full sm:w-auto inline-block">
+            <button className="btn-secondary w-full sm:w-auto">
+              View All Services
+            </button>
+          </Link>
         </div>
       </div>
     </section>

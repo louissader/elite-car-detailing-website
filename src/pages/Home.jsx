@@ -3,7 +3,7 @@ import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
 import FeaturedServices from '../components/FeaturedServices';
 import TrustIndicators from '../components/TrustIndicators';
-import { VehicleGallery } from '../components/VehicleShowcase';
+import { VehicleShowcase } from '../components/VehicleShowcase';
 import Footer from '../components/Footer';
 
 const Home = () => {
@@ -11,8 +11,11 @@ const Home = () => {
     <div className="min-h-screen bg-luxury-black">
       <Navbar />
       <Hero />
+      
+      {/* Scroll Animation Showcase */}
+      <VehicleShowcase type="auto" />
+      
       <FeaturedServices />
-      <VehicleGallery />
       <TrustIndicators />
       <Footer />
     </div>
