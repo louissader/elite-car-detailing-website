@@ -22,7 +22,7 @@ function Contact() {
 
   const teamMembers = [
     {
-      name: 'Wesley',
+      name: 'Wesley Baccay',
       location: 'New York',
       image: wesleyImg,
       linkedin: null

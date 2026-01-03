@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import heroCarImg from '../assets/images/cars/car5.jpg'; // Using one of the luxury car images
 
 const Hero = () => {
   return (
@@ -7,15 +8,14 @@ const Hero = () => {
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 bg-gradient-to-r from-luxury-black via-luxury-black/80 to-transparent z-10"></div>
 
-      {/* Placeholder for background image - Replace with actual luxury car/jet image */}
-      <div className="absolute inset-0 bg-luxury-dark-gray">
-        <div className="w-full h-full flex items-center justify-center text-luxury-gold/20 text-3xl sm:text-4xl md:text-6xl">
-          {/* Temporary placeholder - replace with actual image */}
-          <div className="text-center px-4">
-            <p className="text-xs sm:text-sm tracking-widest">Background Image:</p>
-            <p className="text-sm sm:text-base md:text-lg mt-2">Luxury Vehicle or Private Jet</p>
-          </div>
-        </div>
+      {/* Actual Background Image */}
+      <div className="absolute inset-0">
+        <img
+          src={heroCarImg}
+          alt="Luxury vehicle detailing"
+          className="w-full h-full object-cover object-center"
+          loading="eager"
+        />
       </div>
 
       {/* Hero Content */}

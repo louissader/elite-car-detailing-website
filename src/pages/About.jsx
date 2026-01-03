@@ -27,13 +27,13 @@ function About() {
             <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl text-white mb-4 sm:mb-6">Our Story</h2>
             <div className="space-y-4 text-gray-300 text-sm sm:text-base">
               <p>
-                We're four former Roger Williams University cross country and track athletes who turned our shared passion for performance into a business. Our love for speed didn't end with running—it evolved through Formula 1, where precision, attention to detail, and relentless pursuit of perfection are everything.
+                We're four former Roger Williams University cross country and track athletes who turned our shared passion for performance into a business. The discipline and precision we developed as athletes translates directly to how we approach every detail.
               </p>
               <p>
-                That same mindset drives how we detail luxury vehicles. One of our team members, Vedanth, has already built trust in the luxury car community through his Instagram, photographing and filming high-end automobiles. We've taken that expertise and applied it to hands-on detailing services.
+                Our appreciation for high-performance vehicles comes from understanding what excellence looks like—whether on the track or in the garage. Vedanth has already built trust in the luxury car community through his Instagram, photographing and filming high-end automobiles. We've taken that expertise and applied it to professional detailing services.
               </p>
               <p>
-                Between the four of us, we cover New England—from Massachusetts and New Hampshire to Rhode Island, Connecticut, and New York. Whether it's your exotic car or private jet, we bring the same dedication we had on the track to every detail.
+                Between the four of us, we cover New England—from Massachusetts and New Hampshire to Rhode Island, Connecticut, and New York. Whether it's your exotic car or private jet, we bring the same dedication and work ethic we had on the track to every vehicle we service.
               </p>
             </div>
           </div>
@@ -82,9 +82,9 @@ function About() {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-base sm:text-lg md:text-xl font-heading text-white mb-1 sm:mb-2">F1-Inspired Precision</h3>
+                  <h3 className="text-base sm:text-lg md:text-xl font-heading text-white mb-1 sm:mb-2">Performance-Driven Precision</h3>
                   <p className="text-xs sm:text-sm text-gray-300">
-                    We approach every detail like a pit crew—fast, precise, and obsessed with perfection.
+                    We approach every detail with the same meticulous standards used in high-performance motorsports.
                   </p>
                 </div>
               </div>
