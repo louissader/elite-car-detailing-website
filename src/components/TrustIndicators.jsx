@@ -3,9 +3,9 @@ import React from 'react';
 const TrustIndicators = () => {
   // Condensed stats - FRD: Keep content essential on mobile
   const stats = [
-    { number: '4', label: 'Team Members', icon: '👥' },
-    { number: '100%', label: 'Satisfaction', icon: '⭐' },
-    { number: 'NE', label: 'Coverage', icon: '📍' }
+    { number: '4', label: 'NE Members', icon: '👥' },
+    { number: 'RWU', label: 'Alumni Team', icon: '🎓' },
+    { number: '100%', label: 'Dedicated', icon: '⭐' }
   ];
 
   return (
@@ -21,7 +21,7 @@ const TrustIndicators = () => {
             Why Choose Us
           </p>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-luxury-white mb-3 sm:mb-4">
-            Trusted by Elite <span className="text-luxury-gold">Vehicle Owners</span>
+            Former Athletes, <span className="text-luxury-gold">Elite Standards</span>
           </h2>
           <div className="w-16 sm:w-20 h-0.5 sm:h-1 bg-luxury-gold mx-auto"></div>
         </div>

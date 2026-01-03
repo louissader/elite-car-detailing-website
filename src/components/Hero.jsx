@@ -57,19 +57,19 @@ const Hero = () => {
               <div className="border-l-2 border-luxury-gold pl-3 sm:pl-4 py-2">
                 <p className="text-2xl sm:text-3xl font-bold text-luxury-gold">4</p>
                 <p className="text-xs sm:text-sm text-luxury-white/60 uppercase tracking-wider mt-1">
-                  Team Members
+                  New England Members
                 </p>
               </div>
               <div className="border-l-2 border-luxury-gold pl-3 sm:pl-4 py-2">
-                <p className="text-2xl sm:text-3xl font-bold text-luxury-gold">NE</p>
+                <p className="text-2xl sm:text-3xl font-bold text-luxury-gold">RWU</p>
                 <p className="text-xs sm:text-sm text-luxury-white/60 uppercase tracking-wider mt-1">
-                  Regional Coverage
+                  Alumni Team
                 </p>
               </div>
               <div className="border-l-2 border-luxury-gold pl-3 sm:pl-4 py-2">
                 <p className="text-2xl sm:text-3xl font-bold text-luxury-gold">100%</p>
                 <p className="text-xs sm:text-sm text-luxury-white/60 uppercase tracking-wider mt-1">
-                  Satisfaction Rate
+                  Dedicated
                 </p>
               </div>
             </div>
