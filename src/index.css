@@ -22,4 +22,37 @@
   .btn-secondary {
     @apply border-2 border-luxury-gold hover:bg-luxury-gold hover:text-luxury-black text-luxury-gold font-semibold px-8 py-4 rounded-sm transition-all duration-300 uppercase tracking-wider text-sm;
   }
+
+  /* Option C: Text Outline Utilities */
+  .text-outline-heading {
+    text-shadow:
+      -2px -2px 0 black,
+      2px -2px 0 black,
+      -2px 2px 0 black,
+      2px 2px 0 black,
+      -2px 0 0 black,
+      2px 0 0 black,
+      0 -2px 0 black,
+      0 2px 0 black;
+  }
+
+  .text-outline-heading-lg {
+    text-shadow:
+      -3px -3px 0 black,
+      3px -3px 0 black,
+      -3px 3px 0 black,
+      3px 3px 0 black,
+      -3px 0 0 black,
+      3px 0 0 black,
+      0 -3px 0 black,
+      0 3px 0 black;
+  }
+
+  .text-outline-body {
+    text-shadow:
+      -1px -1px 0 black,
+      1px -1px 0 black,
+      -1px 1px 0 black,
+      1px 1px 0 black;
+  }
 }

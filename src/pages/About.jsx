@@ -8,10 +8,20 @@ function About() {
     <div className="min-h-screen bg-black">
       <Navbar />
 
-      {/* Hero Section with Background Image */}
+      {/* Hero Section with Background Image - Option C */}
       <section className="relative pt-24 sm:pt-32 pb-12 sm:pb-16 md:pb-20 px-4 sm:px-6">
-        {/* Background Image with Enhanced Overlay for Readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/85 to-transparent z-10"></div>
+        {/* Smart Gradient Overlay - Dark top 30%, bright center, dark bottom 20% */}
+        <div
+          className="absolute inset-0 z-10"
+          style={{
+            background: `linear-gradient(
+              180deg,
+              rgba(0, 0, 0, 0.28) 0%,
+              rgba(0, 0, 0, 0) 40%,
+              rgba(0, 0, 0, 0.22) 100%
+            )`
+          }}
+        ></div>
         <div className="absolute inset-0">
           <img
             src={car3}
@@ -22,32 +32,12 @@ function About() {
         </div>
 
         <div className="max-w-4xl mx-auto relative z-20 text-center">
-          <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl text-white mb-4 sm:mb-6">
-            From The Track to Your Driveway
+          <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl text-white mb-4 sm:mb-6 text-outline-heading-lg">
+            About Elite Detailing
           </h1>
-          <p className="text-base sm:text-lg md:text-xl text-gray-300">
-            Four teammates. One passion. Precision detailing across New England.
+          <p className="text-base sm:text-lg md:text-xl text-white text-outline-body">
+            Athletes turned detailing professionals, serving New England with precision and passion.
           </p>
-        </div>
-      </section>
-
-      {/* Our Story - Condensed */}
-      <section className="py-8 sm:py-12 md:py-16 px-4 sm:px-6">
-        <div className="max-w-4xl mx-auto">
-          <div className="bg-darkGray border border-gold/20 rounded-lg p-6 sm:p-8 md:p-10">
-            <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl text-white mb-4 sm:mb-6">Our Story</h2>
-            <div className="space-y-4 text-gray-300 text-sm sm:text-base">
-              <p>
-                We're four former Roger Williams University cross country and track athletes who turned our shared passion for performance into a business. The discipline and precision we developed as athletes translates directly to how we approach every detail.
-              </p>
-              <p>
-                Our appreciation for high-performance vehicles comes from understanding what excellence looks like—whether on the track or in the garage. Vedanth has already built trust in the luxury car community through his Instagram, photographing and filming high-end automobiles. We've taken that expertise and applied it to professional detailing services.
-              </p>
-              <p>
-                Between the four of us, we cover New England—from Massachusetts and New Hampshire to Rhode Island, Connecticut, and New York. Whether it's your exotic car or private jet, we bring the same dedication and work ethic we had on the track to every vehicle we service.
-              </p>
-            </div>
-          </div>
         </div>
       </section>
 

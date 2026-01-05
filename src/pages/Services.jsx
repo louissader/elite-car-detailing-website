@@ -198,10 +198,20 @@ const Services = () => {
     <div className="min-h-screen bg-luxury-black">
       <Navbar />
 
-      {/* Hero Section with Background Image */}
+      {/* Hero Section with Background Image - Option C */}
       <section className="relative pt-20 sm:pt-24 md:pt-32 pb-12 sm:pb-16 md:pb-20">
-        {/* Background Image with Enhanced Overlay for Readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-luxury-black via-luxury-black/85 to-transparent z-10"></div>
+        {/* Smart Gradient Overlay - Dark top 30%, bright center, dark bottom 20% */}
+        <div
+          className="absolute inset-0 z-10"
+          style={{
+            background: `linear-gradient(
+              180deg,
+              rgba(0, 0, 0, 0.28) 0%,
+              rgba(0, 0, 0, 0) 40%,
+              rgba(0, 0, 0, 0.22) 100%
+            )`
+          }}
+        ></div>
         <div className="absolute inset-0">
           <img
             src={jet1}
@@ -213,16 +223,16 @@ const Services = () => {
 
         <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 relative z-20">
           <div className="text-center max-w-4xl mx-auto">
-            <p className="text-luxury-gold uppercase tracking-widest text-xs sm:text-sm mb-3 sm:mb-4 font-semibold">
+            <p className="text-luxury-gold uppercase tracking-widest text-xs sm:text-sm mb-3 sm:mb-4 font-semibold text-outline-body">
               Premium Services
             </p>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-luxury-white mb-4 sm:mb-6">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-luxury-white mb-4 sm:mb-6 text-outline-heading-lg">
               Detailing Packages &
               <span className="block text-luxury-gold mt-1 sm:mt-2">
                 Service Offerings
               </span>
             </h1>
-            <p className="text-base sm:text-lg md:text-xl text-luxury-white/70 leading-relaxed px-2">
+            <p className="text-base sm:text-lg md:text-xl text-luxury-white leading-relaxed px-2 text-outline-body">
               From luxury automobiles to private jets, we offer comprehensive detailing
               solutions tailored to your needs. Each package is designed to deliver
               exceptional results with meticulous attention to detail.

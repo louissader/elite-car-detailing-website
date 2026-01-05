@@ -84,10 +84,20 @@ function Contact() {
     <div className="min-h-screen bg-black">
       <Navbar />
 
-      {/* Hero Section with Background Image */}
+      {/* Hero Section with Background Image - Option C */}
       <section className="relative pt-20 sm:pt-24 pb-8 sm:pb-12 px-4 sm:px-6">
-        {/* Background Image with Enhanced Overlay for Readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/85 to-transparent z-10"></div>
+        {/* Smart Gradient Overlay - Dark top 30%, bright center, dark bottom 20% */}
+        <div
+          className="absolute inset-0 z-10"
+          style={{
+            background: `linear-gradient(
+              180deg,
+              rgba(0, 0, 0, 0.28) 0%,
+              rgba(0, 0, 0, 0) 40%,
+              rgba(0, 0, 0, 0.22) 100%
+            )`
+          }}
+        ></div>
         <div className="absolute inset-0">
           <img
             src={car2}
@@ -99,10 +109,10 @@ function Contact() {
 
         <div className="max-w-7xl mx-auto relative z-20">
           <div className="text-center mb-4 sm:mb-6">
-            <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl text-white mb-2 sm:mb-3">
+            <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl text-white mb-2 sm:mb-3 text-outline-heading-lg">
               Meet Our Team
             </h1>
-            <p className="text-base sm:text-lg text-gray-300">
+            <p className="text-base sm:text-lg text-white text-outline-body">
               Expert detailing professionals serving the Northeast
             </p>
           </div>
