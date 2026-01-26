@@ -150,8 +150,8 @@ bookings (
 
 ```bash
 # Clone repository
-git clone https://github.com/louissader/elite-detailing-website.git
-cd elite-detailing-website
+git clone https://github.com/louissader/elite-car-detailing-website.git
+cd elite-car-detailing-website
 
 # Install dependencies
 npm install
