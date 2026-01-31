@@ -2,10 +2,15 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import SEO from '../components/SEO';
 
 function NotFound() {
   return (
     <div className="min-h-screen bg-black flex flex-col">
+      <SEO
+        title="Page Not Found"
+        description="The page you're looking for doesn't exist. Return to Elite Detailing homepage or browse our luxury auto and jet detailing services."
+      />
       <Navbar />
 
       <main className="flex-grow flex items-center justify-center px-4 sm:px-6 py-12">

@@ -3,6 +3,7 @@ import Navbar from '../components/Navbar';
 import ServicePackage from '../components/ServicePackage';
 import BeforeAfterGallery from '../components/BeforeAfterGallery';
 import Footer from '../components/Footer';
+import SEO from '../components/SEO';
 import jet1 from '../assets/images/jets/jet1.jpeg';
 
 const Services = () => {
@@ -196,6 +197,11 @@ const Services = () => {
 
   return (
     <div className="min-h-screen bg-luxury-black">
+      <SEO
+        title="Our Services"
+        description="Explore our luxury auto and private jet detailing packages. From essential details to concierge-level service, we offer ceramic coating, paint correction, and premium protection for your vehicle or aircraft."
+        canonical="https://elitedetailing.com/services"
+      />
       <Navbar />
 
       {/* Hero Section with Background Image */}

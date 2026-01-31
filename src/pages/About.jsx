@@ -1,11 +1,17 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import SEO from '../components/SEO';
 import car3 from '../assets/images/cars/car3.jpg';
 
 function About() {
   return (
     <div className="min-h-screen bg-black">
+      <SEO
+        title="About Us"
+        description="Meet Elite Detailing - four Roger Williams University NCAA cross country and track athletes bringing precision and dedication to luxury auto and jet detailing across New England."
+        canonical="https://elitedetailing.com/about"
+      />
       <Navbar />
 
       {/* Our Story Section - Background spans full width/height */}

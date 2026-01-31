@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import SEO from '../components/SEO';
 import { submitContactForm } from '../lib/bookingService';
 
 // Import team images
@@ -82,6 +83,11 @@ function Contact() {
 
   return (
     <div className="min-h-screen bg-black">
+      <SEO
+        title="Contact Us"
+        description="Get in touch with Elite Detailing. Contact our team of professional detailers serving Massachusetts, New Hampshire, Rhode Island, Connecticut, and New York."
+        canonical="https://elitedetailing.com/contact"
+      />
       <Navbar />
 
       {/* Hero Section with Background Image */}

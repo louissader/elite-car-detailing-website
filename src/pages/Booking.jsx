@@ -3,6 +3,7 @@ import Navbar from '../components/Navbar';
 import PricingCalculator from '../components/PricingCalculator';
 import AppointmentCalendar from '../components/AppointmentCalendar';
 import Footer from '../components/Footer';
+import SEO from '../components/SEO';
 import { createBooking } from '../lib/bookingService';
 
 const Booking = () => {
@@ -116,6 +117,11 @@ const Booking = () => {
 
   return (
     <div className="min-h-screen bg-luxury-black">
+      <SEO
+        title="Book Your Appointment"
+        description="Schedule your luxury auto or private jet detailing appointment online. Choose from our premium detailing packages and select a convenient time."
+        canonical="https://elitedetailing.com/booking"
+      />
       <Navbar />
 
       {/* Hero Section - Mobile responsive padding and text sizes */}
