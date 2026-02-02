@@ -149,7 +149,7 @@ function Contact() {
             </div>
 
             {/* Contact Info - Horizontal Grid */}
-            <div className="grid grid-cols-3 gap-3 sm:gap-4 md:gap-6 pt-4 sm:pt-6 border-t border-luxury-gold/20">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 md:gap-6 pt-4 sm:pt-6 border-t border-luxury-gold/20">
               <div className="text-center">
                 <div className="w-8 h-8 sm:w-10 sm:h-10 bg-luxury-gold/10 rounded-full flex items-center justify-center mx-auto mb-2">
                   <svg className="w-4 h-4 sm:w-5 sm:h-5 text-luxury-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
