@@ -116,7 +116,7 @@ function Contact() {
           {/* Compact Combined Layout - Team Images + Contact Info */}
           <div className="bg-luxury-dark-gray border border-luxury-gold/20 rounded-lg p-4 sm:p-6">
             {/* Team Grid - 4 cols on all breakpoints */}
-            <div className="grid grid-cols-4 gap-2 sm:gap-3 md:gap-4 mb-4 sm:mb-6">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3 md:gap-4 mb-4 sm:mb-6">
               {teamMembers.map((member, index) => (
                 <div key={index} className="group">
                   <div className="aspect-square overflow-hidden bg-black/50 rounded-lg mb-2 border border-luxury-gold/20 group-hover:border-luxury-gold transition-colors">
