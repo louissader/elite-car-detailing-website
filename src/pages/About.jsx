@@ -62,26 +62,26 @@ function About() {
       </section>
 
       {/* Coverage Map - Condensed */}
-      <section className="py-8 sm:py-12 md:py-16 px-4 sm:px-6 bg-darkGray">
+      <section className="py-8 sm:py-12 md:py-16 px-4 sm:px-6 bg-luxury-dark-gray">
         <div className="max-w-5xl mx-auto">
           <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl text-white mb-6 sm:mb-8 md:mb-12 text-center">
             Coverage Across New England
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
-            <div className="bg-black/50 border border-gold/20 rounded-lg p-3 sm:p-4 md:p-6 text-center">
-              <h3 className="text-base sm:text-lg md:text-xl font-heading text-gold mb-1 sm:mb-2">New York</h3>
+            <div className="bg-black/50 border border-luxury-gold/20 rounded-lg p-3 sm:p-4 md:p-6 text-center">
+              <h3 className="text-base sm:text-lg md:text-xl font-heading text-luxury-gold mb-1 sm:mb-2">New York</h3>
               <p className="text-xs sm:text-sm text-gray-400">Wesley</p>
             </div>
-            <div className="bg-black/50 border border-gold/20 rounded-lg p-3 sm:p-4 md:p-6 text-center">
-              <h3 className="text-base sm:text-lg md:text-xl font-heading text-gold mb-1 sm:mb-2">CT & RI</h3>
+            <div className="bg-black/50 border border-luxury-gold/20 rounded-lg p-3 sm:p-4 md:p-6 text-center">
+              <h3 className="text-base sm:text-lg md:text-xl font-heading text-luxury-gold mb-1 sm:mb-2">CT & RI</h3>
               <p className="text-xs sm:text-sm text-gray-400">Dylan</p>
             </div>
-            <div className="bg-black/50 border border-gold/20 rounded-lg p-3 sm:p-4 md:p-6 text-center">
-              <h3 className="text-base sm:text-lg md:text-xl font-heading text-gold mb-1 sm:mb-2">NH & MA</h3>
+            <div className="bg-black/50 border border-luxury-gold/20 rounded-lg p-3 sm:p-4 md:p-6 text-center">
+              <h3 className="text-base sm:text-lg md:text-xl font-heading text-luxury-gold mb-1 sm:mb-2">NH & MA</h3>
               <p className="text-xs sm:text-sm text-gray-400">Louis</p>
             </div>
-            <div className="bg-black/50 border border-gold/20 rounded-lg p-3 sm:p-4 md:p-6 text-center">
-              <h3 className="text-base sm:text-lg md:text-xl font-heading text-gold mb-1 sm:mb-2">NH & RI</h3>
+            <div className="bg-black/50 border border-luxury-gold/20 rounded-lg p-3 sm:p-4 md:p-6 text-center">
+              <h3 className="text-base sm:text-lg md:text-xl font-heading text-luxury-gold mb-1 sm:mb-2">NH & RI</h3>
               <p className="text-xs sm:text-sm text-gray-400">Vedanth</p>
             </div>
           </div>
@@ -95,10 +95,10 @@ function About() {
             Why Choose Us
           </h2>
           <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
-            <div className="bg-darkGray border border-gold/20 rounded-lg p-4 sm:p-6">
+            <div className="bg-luxury-dark-gray border border-luxury-gold/20 rounded-lg p-4 sm:p-6">
               <div className="flex items-start gap-3 sm:gap-4">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gold/10 rounded-full flex items-center justify-center flex-shrink-0">
-                  <svg className="w-5 h-5 sm:w-6 sm:h-6 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-luxury-gold/10 rounded-full flex items-center justify-center flex-shrink-0">
+                  <svg className="w-5 h-5 sm:w-6 sm:h-6 text-luxury-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                   </svg>
                 </div>
@@ -111,10 +111,10 @@ function About() {
               </div>
             </div>
 
-            <div className="bg-darkGray border border-gold/20 rounded-lg p-4 sm:p-6">
+            <div className="bg-luxury-dark-gray border border-luxury-gold/20 rounded-lg p-4 sm:p-6">
               <div className="flex items-start gap-3 sm:gap-4">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gold/10 rounded-full flex items-center justify-center flex-shrink-0">
-                  <svg className="w-5 h-5 sm:w-6 sm:h-6 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-luxury-gold/10 rounded-full flex items-center justify-center flex-shrink-0">
+                  <svg className="w-5 h-5 sm:w-6 sm:h-6 text-luxury-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
                   </svg>
@@ -128,10 +128,10 @@ function About() {
               </div>
             </div>
 
-            <div className="bg-darkGray border border-gold/20 rounded-lg p-4 sm:p-6">
+            <div className="bg-luxury-dark-gray border border-luxury-gold/20 rounded-lg p-4 sm:p-6">
               <div className="flex items-start gap-3 sm:gap-4">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gold/10 rounded-full flex items-center justify-center flex-shrink-0">
-                  <svg className="w-5 h-5 sm:w-6 sm:h-6 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-luxury-gold/10 rounded-full flex items-center justify-center flex-shrink-0">
+                  <svg className="w-5 h-5 sm:w-6 sm:h-6 text-luxury-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                   </svg>
@@ -145,10 +145,10 @@ function About() {
               </div>
             </div>
 
-            <div className="bg-darkGray border border-gold/20 rounded-lg p-4 sm:p-6">
+            <div className="bg-luxury-dark-gray border border-luxury-gold/20 rounded-lg p-4 sm:p-6">
               <div className="flex items-start gap-3 sm:gap-4">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gold/10 rounded-full flex items-center justify-center flex-shrink-0">
-                  <svg className="w-5 h-5 sm:w-6 sm:h-6 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-luxury-gold/10 rounded-full flex items-center justify-center flex-shrink-0">
+                  <svg className="w-5 h-5 sm:w-6 sm:h-6 text-luxury-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
                   </svg>
                 </div>
@@ -165,7 +165,7 @@ function About() {
       </section>
 
       {/* CTA - Mobile responsive */}
-      <section className="py-8 sm:py-12 md:py-16 px-4 sm:px-6 bg-gradient-to-r from-gold/10 to-gold/5 border-t border-gold/20">
+      <section className="py-8 sm:py-12 md:py-16 px-4 sm:px-6 bg-gradient-to-r from-luxury-gold/10 to-luxury-gold/5 border-t border-luxury-gold/20">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl text-white mb-4 sm:mb-6">
             Ready to Experience Elite Detailing?
@@ -175,7 +175,7 @@ function About() {
           </p>
           <a
             href="/booking"
-            className="inline-block bg-gold text-black px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold hover:bg-gold/90 transition-colors text-sm sm:text-base md:text-lg"
+            className="inline-block bg-luxury-gold text-black px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold hover:bg-luxury-gold/90 transition-colors text-sm sm:text-base md:text-lg"
           >
             Schedule Your Service
           </a>
