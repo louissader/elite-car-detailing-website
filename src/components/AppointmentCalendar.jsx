@@ -1,32 +1,13 @@
 import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import { getAvailableTimeSlots } from '../lib/bookingService';
 
 const AppointmentCalendar = ({ onDateSelect, onTimeSelect }) => {
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedTime, setSelectedTime] = useState(null);
-
-  // Available time slots
-  const timeSlots = [
-    { time: '08:00 AM', available: true },
-    { time: '09:00 AM', available: true },
-    { time: '10:00 AM', available: true },
-    { time: '11:00 AM', available: false }, // Example: booked
-    { time: '12:00 PM', available: true },
-    { time: '01:00 PM', available: true },
-    { time: '02:00 PM', available: true },
-    { time: '03:00 PM', available: true },
-    { time: '04:00 PM', available: false }, // Example: booked
-    { time: '05:00 PM', available: true },
-  ];
-
-  // Filter out past dates
-  // eslint-disable-next-line no-unused-vars
-  const isDateAvailable = (date) => {
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-    return date >= today;
-  };
+  const [timeSlots, setTimeSlots] = useState([]);
+  const [loadingSlots, setLoadingSlots] = useState(false);
 
   // Filter out Sundays (business closed)
   const filterDate = (date) => {
@@ -34,11 +15,31 @@ const AppointmentCalendar = ({ onDateSelect, onTimeSelect }) => {
     return day !== 0; // 0 = Sunday
   };
 
-  const handleDateChange = (date) => {
+  const handleDateChange = async (date) => {
     setSelectedDate(date);
-    setSelectedTime(null); // Reset time when date changes
+    setSelectedTime(null);
     if (onDateSelect) {
       onDateSelect(date);
+    }
+    if (onTimeSelect) {
+      onTimeSelect(null);
+    }
+
+    // Fetch real availability from database
+    setLoadingSlots(true);
+    try {
+      const slots = await getAvailableTimeSlots(date);
+      setTimeSlots(slots);
+    } catch {
+      // Fallback: all slots available
+      const allSlots = [
+        '08:00 AM', '09:00 AM', '10:00 AM', '11:00 AM',
+        '12:00 PM', '01:00 PM', '02:00 PM', '03:00 PM',
+        '04:00 PM', '05:00 PM'
+      ];
+      setTimeSlots(allSlots.map(time => ({ time, available: true })));
+    } finally {
+      setLoadingSlots(false);
     }
   };
 
@@ -120,30 +121,37 @@ const AppointmentCalendar = ({ onDateSelect, onTimeSelect }) => {
           <label className="block text-luxury-gold text-sm font-semibold mb-3 uppercase tracking-wider">
             Select Time Slot
           </label>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-            {timeSlots.map((slot, index) => (
-              <button
-                key={index}
-                onClick={() => slot.available && handleTimeSelect(slot.time)}
-                disabled={!slot.available}
-                className={`p-3 rounded-sm border-2 transition-all duration-300 ${
-                  !slot.available
-                    ? 'border-luxury-gold/10 bg-luxury-medium-gray/30 text-luxury-white/30 cursor-not-allowed'
-                    : selectedTime === slot.time
-                    ? 'border-luxury-gold bg-luxury-gold/10 text-luxury-gold'
-                    : 'border-luxury-gold/20 text-luxury-white hover:border-luxury-gold'
-                }`}
-              >
-                <div className="text-sm font-semibold">{slot.time}</div>
-                {!slot.available && (
-                  <div className="text-xs mt-1">Booked</div>
-                )}
-              </button>
-            ))}
-          </div>
+          {loadingSlots ? (
+            <div className="flex items-center justify-center py-8">
+              <div className="w-6 h-6 border-2 border-luxury-gold border-t-transparent rounded-full animate-spin mr-3"></div>
+              <span className="text-luxury-white/60 text-sm">Checking availability...</span>
+            </div>
+          ) : (
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+              {timeSlots.map((slot, index) => (
+                <button
+                  key={index}
+                  onClick={() => slot.available && handleTimeSelect(slot.time)}
+                  disabled={!slot.available}
+                  className={`p-3 rounded-sm border-2 transition-all duration-300 ${
+                    !slot.available
+                      ? 'border-luxury-gold/10 bg-luxury-medium-gray/30 text-luxury-white/30 cursor-not-allowed'
+                      : selectedTime === slot.time
+                      ? 'border-luxury-gold bg-luxury-gold/10 text-luxury-gold'
+                      : 'border-luxury-gold/20 text-luxury-white hover:border-luxury-gold'
+                  }`}
+                >
+                  <div className="text-sm font-semibold">{slot.time}</div>
+                  {!slot.available && (
+                    <div className="text-xs mt-1">Booked</div>
+                  )}
+                </button>
+              ))}
+            </div>
+          )}
           {selectedTime && (
             <p className="text-luxury-gold text-sm mt-3 font-semibold">
-              ✓ Appointment scheduled for {selectedTime}
+              Appointment scheduled for {selectedTime}
             </p>
           )}
         </div>

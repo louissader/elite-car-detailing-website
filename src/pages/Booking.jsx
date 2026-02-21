@@ -10,6 +10,7 @@ const Booking = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState(null);
+  const [bookingConfirmation, setBookingConfirmation] = useState(null);
   const [bookingData, setBookingData] = useState({
     service: null,
     totalPrice: 0,
@@ -82,27 +83,15 @@ const Booking = () => {
       const result = await createBooking(bookingData);
 
       if (result.success) {
-        // Show success message
-        const message = result.demo
-          ? `Booking created in demo mode!\n\nNote: To enable real bookings and email confirmations:\n1. Set up Supabase (see supabase-setup.md)\n2. Add environment variables to .env file\n3. Restart the dev server\n\nYour booking details have been logged to the console.`
-          : `Thank you for booking, ${bookingData.customer.name}!\n\nConfirmation email sent to ${bookingData.customer.email}\n\nBooking ID: ${result.data.id}\n\nWe'll see you on ${bookingData.date.toLocaleDateString()} at ${bookingData.time}!`;
-
-        alert(message);
-
-        // Reset form and go back to step 1
-        setBookingData({
-          service: null,
-          totalPrice: 0,
-          date: null,
-          time: null,
-          customer: {
-            name: '',
-            email: '',
-            phone: '',
-            vehicleInfo: ''
-          }
+        setBookingConfirmation({
+          id: result.data?.id,
+          name: bookingData.customer.name,
+          email: bookingData.customer.email,
+          date: bookingData.date,
+          time: bookingData.time,
+          service: bookingData.service?.package?.name,
+          total: bookingData.totalPrice,
         });
-        setCurrentStep(1);
       } else {
         // Show error message
         setSubmitError(result.message || 'Failed to create booking. Please try again.');
@@ -188,6 +177,72 @@ const Booking = () => {
       <section className="py-8 sm:py-12 md:py-16 bg-luxury-black">
         <div className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-20">
           <div className="max-w-6xl mx-auto">
+
+            {/* Booking Confirmation */}
+            {bookingConfirmation && (
+              <div className="max-w-2xl mx-auto">
+                <div className="bg-luxury-dark-gray border border-luxury-gold/20 p-6 sm:p-10 rounded-sm text-center">
+                  <div className="w-16 h-16 bg-luxury-gold/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <svg className="w-8 h-8 text-luxury-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <h2 className="text-2xl sm:text-3xl font-bold text-luxury-white mb-2">
+                    Booking Confirmed
+                  </h2>
+                  <p className="text-luxury-white/60 mb-8">
+                    Thank you, {bookingConfirmation.name}! A confirmation email has been sent to {bookingConfirmation.email}.
+                  </p>
+
+                  <div className="bg-luxury-black border border-luxury-gold/20 p-5 rounded-sm text-left space-y-3 mb-8">
+                    {bookingConfirmation.id && (
+                      <div className="flex justify-between text-sm">
+                        <span className="text-luxury-white/50">Booking ID</span>
+                        <span className="text-luxury-white font-mono text-xs">{bookingConfirmation.id.slice(0, 8)}</span>
+                      </div>
+                    )}
+                    <div className="flex justify-between text-sm">
+                      <span className="text-luxury-white/50">Service</span>
+                      <span className="text-luxury-white">{bookingConfirmation.service}</span>
+                    </div>
+                    <div className="flex justify-between text-sm">
+                      <span className="text-luxury-white/50">Date</span>
+                      <span className="text-luxury-white">
+                        {bookingConfirmation.date.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' })}
+                      </span>
+                    </div>
+                    <div className="flex justify-between text-sm">
+                      <span className="text-luxury-white/50">Time</span>
+                      <span className="text-luxury-white">{bookingConfirmation.time}</span>
+                    </div>
+                    <div className="flex justify-between text-sm border-t border-luxury-gold/20 pt-3">
+                      <span className="text-luxury-white/50">Estimated Total</span>
+                      <span className="text-luxury-gold font-bold text-lg">${bookingConfirmation.total.toLocaleString()}</span>
+                    </div>
+                  </div>
+
+                  <button
+                    onClick={() => {
+                      setBookingConfirmation(null);
+                      setBookingData({
+                        service: null,
+                        totalPrice: 0,
+                        date: null,
+                        time: null,
+                        customer: { name: '', email: '', phone: '', vehicleInfo: '' }
+                      });
+                      setCurrentStep(1);
+                    }}
+                    className="btn-secondary"
+                  >
+                    Book Another Appointment
+                  </button>
+                </div>
+              </div>
+            )}
+
+            {/* Booking Steps */}
+            {!bookingConfirmation && (
             <div className="grid lg:grid-cols-3 gap-6 md:gap-8">
               {/* Main Form Area */}
               <div className="lg:col-span-2">
@@ -435,6 +490,7 @@ const Booking = () => {
                 </div>
               </div>
             </div>
+            )}
           </div>
         </div>
       </section>
