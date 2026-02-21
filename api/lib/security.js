@@ -4,6 +4,7 @@
 /* eslint-disable no-undef */
 const ALLOWED_ORIGINS = [
   process.env.ALLOWED_ORIGIN || 'https://elitedetailing.com',
+  'https://elite-detailing-website.vercel.app',
   'https://elite-car-detailing-website.vercel.app',
   // Allow localhost for development
   'http://localhost:5173',
