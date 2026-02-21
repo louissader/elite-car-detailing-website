@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import ServicePackage from '../components/ServicePackage';
 import BeforeAfterGallery from '../components/BeforeAfterGallery';
@@ -374,12 +375,12 @@ const Services = () => {
             Our team is ready to exceed your expectations.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="btn-primary">
+            <Link to="/contact" className="btn-primary">
               Get a Free Quote
-            </button>
-            <button className="btn-secondary">
+            </Link>
+            <Link to="/booking" className="btn-secondary">
               Schedule Appointment
-            </button>
+            </Link>
           </div>
         </div>
       </section>
