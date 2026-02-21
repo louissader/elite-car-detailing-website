@@ -3,9 +3,9 @@ import React from 'react';
 const TrustIndicators = () => {
   // Condensed stats - FRD: Keep content essential on mobile
   const stats = [
-    { number: '4', label: 'NE Members', icon: '👥' },
-    { number: 'RWU', label: 'Alumni Team', icon: '🎓' },
-    { number: '100%', label: 'Dedicated', icon: '⭐' }
+    { number: '4', label: 'NE Members', icon: '👥', iconLabel: 'Team members' },
+    { number: 'RWU', label: 'Alumni Team', icon: '🎓', iconLabel: 'Graduation cap' },
+    { number: '100%', label: 'Dedicated', icon: '⭐', iconLabel: 'Star rating' }
   ];
 
   return (
@@ -33,7 +33,7 @@ const TrustIndicators = () => {
               key={index}
               className="bg-luxury-black border border-luxury-gold/30 p-4 sm:p-6 text-center hover:border-luxury-gold transition-all duration-300 rounded-sm group"
             >
-              <div className="text-2xl sm:text-3xl md:text-4xl mb-2 sm:mb-3 group-hover:scale-110 transition-transform duration-300">
+              <div className="text-2xl sm:text-3xl md:text-4xl mb-2 sm:mb-3 group-hover:scale-110 transition-transform duration-300" role="img" aria-label={stat.iconLabel}>
                 {stat.icon}
               </div>
               <p className="text-3xl sm:text-4xl font-bold text-luxury-white mb-1 sm:mb-2">{stat.number}</p>

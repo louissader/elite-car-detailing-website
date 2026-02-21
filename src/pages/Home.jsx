@@ -11,7 +11,7 @@ const Home = () => {
       <SEO
         title="Home"
         description="Elite Detailing offers professional luxury auto and private jet detailing services across New England. Four Roger Williams University NCAA athletes bringing precision to exotic cars and aircraft."
-        canonical="https://elitedetailing.com/"
+        canonical="https://elite-detailing-website.vercel.app/"
       />
       <Navbar />
       <Hero />

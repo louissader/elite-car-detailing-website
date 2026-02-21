@@ -86,7 +86,7 @@ function Contact() {
       <SEO
         title="Contact Us"
         description="Get in touch with Elite Detailing. Contact our team of professional detailers serving Massachusetts, New Hampshire, Rhode Island, Connecticut, and New York."
-        canonical="https://elitedetailing.com/contact"
+        canonical="https://elite-detailing-website.vercel.app/contact"
       />
       <Navbar />
 

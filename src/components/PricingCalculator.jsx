@@ -103,7 +103,7 @@ const PricingCalculator = ({ onPriceChange, onServiceSelect }) => {
                 : 'border-luxury-gold/20 text-luxury-white hover:border-luxury-gold'
             }`}
           >
-            <div className="text-2xl mb-2">🚗</div>
+            <div className="text-2xl mb-2" role="img" aria-label="Car">🚗</div>
             <div className="font-semibold">Luxury Auto</div>
           </button>
           <button
@@ -117,7 +117,7 @@ const PricingCalculator = ({ onPriceChange, onServiceSelect }) => {
                 : 'border-luxury-gold/20 text-luxury-white hover:border-luxury-gold'
             }`}
           >
-            <div className="text-2xl mb-2">✈️</div>
+            <div className="text-2xl mb-2" role="img" aria-label="Airplane">✈️</div>
             <div className="font-semibold">Private Jet</div>
           </button>
         </div>

@@ -109,7 +109,7 @@ const Booking = () => {
       <SEO
         title="Book Your Appointment"
         description="Schedule your luxury auto or private jet detailing appointment online. Choose from our premium detailing packages and select a convenient time."
-        canonical="https://elitedetailing.com/booking"
+        canonical="https://elite-detailing-website.vercel.app/booking"
       />
       <Navbar />
 

@@ -10,7 +10,7 @@ function About() {
       <SEO
         title="About Us"
         description="Meet Elite Detailing - four Roger Williams University NCAA cross country and track athletes bringing precision and dedication to luxury auto and jet detailing across New England."
-        canonical="https://elitedetailing.com/about"
+        canonical="https://elite-detailing-website.vercel.app/about"
       />
       <Navbar />
 

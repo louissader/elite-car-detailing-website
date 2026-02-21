@@ -9,7 +9,7 @@ const SEO = ({
   description,
   canonical,
   ogType = 'website',
-  ogImage = 'https://elitedetailing.com/og-image.jpg',
+  ogImage = 'https://elite-detailing-website.vercel.app/og-image.jpg',
 }) => {
   const siteTitle = 'Elite Detailing';
   const fullTitle = title ? `${title} | ${siteTitle}` : `${siteTitle} | Luxury Auto & Private Jet Detailing in New England`;

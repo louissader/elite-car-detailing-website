@@ -201,7 +201,7 @@ const Services = () => {
       <SEO
         title="Our Services"
         description="Explore our luxury auto and private jet detailing packages. From essential details to concierge-level service, we offer ceramic coating, paint correction, and premium protection for your vehicle or aircraft."
-        canonical="https://elitedetailing.com/services"
+        canonical="https://elite-detailing-website.vercel.app/services"
       />
       <Navbar />
 
@@ -314,7 +314,7 @@ const Services = () => {
                 key={index}
                 className="bg-luxury-black border border-luxury-gold/20 p-6 hover:border-luxury-gold transition-all duration-300 group"
               >
-                <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300" role="img" aria-label={service.title}>
                   {service.icon}
                 </div>
                 <h3 className="text-xl font-bold text-luxury-white mb-2 group-hover:text-luxury-gold transition-colors duration-300">
